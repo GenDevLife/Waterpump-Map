@@ -1,0 +1,21 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "create-react-app": "^1.2.1",
+    "es-module-shims": "^2.0.9",
+    "modbus-serial": "^8.0.18",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "ws": "^8.18.0"
+  }
+}
