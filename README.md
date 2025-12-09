@@ -1,77 +1,114 @@
-# Mapbox 3D Water Management System
+<p align="center">
+  <img src="./assets/image/image.png" alt="Waterpump Map System" width="600">
+</p>
 
-ระบบ SCADA สำหรับจัดการสถานีน้ำผ่าน Mapbox 3D Map พร้อมการรองรับ BACnet/Modbus และ Demo Mode
+<h1 align="center">🌊 Waterpump Map - SCADA Visualization System</h1>
 
-![System Preview](./assets/image/image.png)
+<p align="center">
+  <strong>ระบบ SCADA สำหรับ monitoring สถานีสูบน้ำผ่าน 3D Map แบบ Real-time</strong>
+</p>
 
-## ✨ Features
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#api">API</a> •
+  <a href="#configuration">Configuration</a>
+</p>
 
-- 🗺️ **3D Map Visualization** - แผนที่ 3 มิติพร้อม building extrusion ด้วย Mapbox GL JS
-- 📡 **Real-time Monitoring** - การติดตามสถานะสถานีแบบ real-time ผ่าน WebSocket
-- 🎮 **Demo Mode** - โหมดจำลองข้อมูลสำหรับทดสอบและ demo
-- 🔌 **Modbus Integration** - รองรับการเชื่อมต่อ Modbus TCP/IP จริง
-- 🎛️ **Control Panel** - UI สำหรับสลับโหมดและดูสถานะการเชื่อมต่อ
-- 📊 **6 Station Types** - รองรับสถานีหลายประเภท (Pump, Valve, Flood Gate)
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/Mapbox-GL%20JS%203.0-000000?style=for-the-badge&logo=mapbox&logoColor=white" alt="Mapbox">
+  <img src="https://img.shields.io/badge/Socket.IO-4.x-010101?style=for-the-badge&logo=socket.io&logoColor=white" alt="Socket.IO">
+  <img src="https://img.shields.io/badge/Modbus-TCP%2FIP-FF6B35?style=for-the-badge" alt="Modbus">
+</p>
+
+---
+
+## ✨ Features {#features}
+
+| Feature                      | Description                                             |
+| ---------------------------- | ------------------------------------------------------- |
+| 🗺️ **3D Map Visualization**  | แผนที่ 3 มิติพร้อม building extrusion ด้วย Mapbox GL JS |
+| 📡 **Real-time Monitoring**  | ติดตามสถานะสถานีแบบ real-time ผ่าน WebSocket            |
+| 🎮 **Demo Mode**             | โหมดจำลองข้อมูลสำหรับทดสอบโดยไม่ต้องต่ออุปกรณ์จริง      |
+| 🔌 **Modbus Integration**    | รองรับการเชื่อมต่อ Modbus TCP/IP กับ PLC จริง           |
+| 🎛️ **Control Panel**         | UI สลับโหมดและดูสถานะการเชื่อมต่อ                       |
+| 📊 **Multi-Station Support** | รองรับ 6 สถานี: Pump, Valve, Double Valve, Flood Gate   |
+
+---
 
 ## 🏗️ Project Structure
 
 ```
-Mapbox/
-├── index.html              # หน้าหลักของแอพพลิเคชัน
-├── assets/
-│   ├── css/
-│   │   └── style.css       # สไตล์หลัก
-│   ├── image/              # รูปภาพพื้นหลัง popup
-│   │   ├── image.png
-│   │   ├── IMG_3893.png
-│   │   ├── IMG_3894.png
-│   │   └── IMG_3895.png
-│   └── js/
-│       ├── server.js       # Backend server (BACnet/Modbus + Demo)
-│       ├── script.js       # Frontend client
-│       ├── package.json
-│       └── node_modules/
-└── README.md
+Waterpump-Map/
+├── 📄 index.html              # Main application
+├── 📄 README.md
+├── 📄 .gitignore
+└── 📁 assets/
+    ├── 📁 css/
+    │   └── style.css          # Main styles
+    ├── 📁 image/               # Station background images
+    │   ├── image.png
+    │   ├── IMG_3893.png
+    │   ├── IMG_3894.png
+    │   └── IMG_3895.png
+    └── 📁 js/
+        ├── server.js           # Backend (BACnet/Modbus + Demo)
+        ├── script.js           # Frontend client
+        ├── package.json
+        └── node_modules/
 ```
 
-## 🚀 Getting Started
+---
+
+## 🚀 Installation {#installation}
 
 ### Prerequisites
 
-- Node.js >= 18.0
-- npm >= 9.0
+- **Node.js** >= 18.0
+- **npm** >= 9.0
 
-### Installation
+### Quick Start
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd Mapbox
+# Clone repository
+git clone https://github.com/GenDevLife/Waterpump-Map.git
+cd Waterpump-Map
 
 # Install dependencies
 cd assets/js
 npm install
+
+# Start server (Demo mode)
+npm start
 ```
+
+---
+
+## 💻 Usage {#usage}
 
 ### Running the Server
 
 #### Demo Mode (Default)
 
 ```bash
-# เริ่มต้นด้วย Demo Mode - ไม่ต้องเชื่อมต่ออุปกรณ์จริง
 npm start
-
-# หรือ
+# or
 npm run demo
 ```
+
+> ℹ️ Demo mode จำลองข้อมูลสถานีแบบ realistic ไม่ต้องเชื่อมต่ออุปกรณ์จริง
 
 #### Modbus Mode
 
 ```bash
-# เชื่อมต่อกับ Modbus Server จริง
 npm run modbus
+```
 
-# หรือกำหนด host/port เอง
+#### Custom Modbus Configuration
+
+```bash
 set MODBUS_HOST=192.168.1.100
 set MODBUS_PORT=502
 npm run modbus
@@ -79,129 +116,175 @@ npm run modbus
 
 ### Viewing the Application
 
-1. เปิด `index.html` ใน browser (แนะนำ Chrome หรือ Firefox)
-2. หรือใช้ Live Server extension ใน VS Code
+1. เปิด `index.html` ใน browser (Chrome หรือ Firefox แนะนำ)
+2. หรือใช้ **Live Server** extension ใน VS Code
 
-## 📡 API Endpoints
+---
 
-| Method | Endpoint        | Description                   |
-| ------ | --------------- | ----------------------------- |
-| GET    | `/api/status`   | สถานะ server และการเชื่อมต่อ  |
-| GET    | `/api/mode`     | โหมดปัจจุบัน (demo/modbus)    |
-| POST   | `/api/mode`     | สลับโหมด `{ "mode": "demo" }` |
-| GET    | `/api/stations` | ข้อกำหนดของสถานีทั้งหมด       |
+## 📡 API Reference {#api}
 
-### ตัวอย่างการใช้งาน API
+### REST Endpoints
+
+| Method | Endpoint        | Description                     |
+| :----: | --------------- | ------------------------------- |
+| `GET`  | `/api/status`   | Server status & connection info |
+| `GET`  | `/api/mode`     | Current mode (demo/modbus)      |
+| `POST` | `/api/mode`     | Switch mode                     |
+| `GET`  | `/api/stations` | Station definitions             |
+
+### Examples
 
 ```bash
-# ดูสถานะ server
+# Get server status
 curl http://localhost:3001/api/status
 
-# สลับเป็น Demo Mode
-curl -X POST http://localhost:3001/api/mode -H "Content-Type: application/json" -d '{"mode":"demo"}'
+# Switch to Demo mode
+curl -X POST http://localhost:3001/api/mode \
+  -H "Content-Type: application/json" \
+  -d '{"mode":"demo"}'
 
-# สลับเป็น Modbus Mode
-curl -X POST http://localhost:3001/api/mode -H "Content-Type: application/json" -d '{"mode":"modbus"}'
+# Switch to Modbus mode
+curl -X POST http://localhost:3001/api/mode \
+  -H "Content-Type: application/json" \
+  -d '{"mode":"modbus"}'
 ```
 
-## 🔌 WebSocket Events
+### WebSocket Events
 
-### Client → Server
+#### Client → Server
 
-| Event          | Data                           | Description   |
-| -------------- | ------------------------------ | ------------- |
-| `switchMode`   | `{ mode: "demo" \| "modbus" }` | สลับโหมด      |
-| `setDemoState` | `{ stationId, key, value }`    | แก้ไขค่า Demo |
+| Event          | Payload                        | Description            |
+| -------------- | ------------------------------ | ---------------------- |
+| `switchMode`   | `{ mode: "demo" \| "modbus" }` | Switch connection mode |
+| `setDemoState` | `{ stationId, key, value }`    | Modify demo data       |
 
-### Server → Client
+#### Server → Client
 
-| Event        | Data                                 | Description               |
-| ------------ | ------------------------------------ | ------------------------- |
-| `modbusData` | `{ [registerId]: { values, name } }` | ข้อมูล register ล่าสุด    |
-| `modeChange` | `{ mode: string }`                   | แจ้งเตือนเมื่อโหมดเปลี่ยน |
+| Event        | Payload                              | Description              |
+| ------------ | ------------------------------------ | ------------------------ |
+| `modbusData` | `{ [registerId]: { values, name } }` | Real-time register data  |
+| `modeChange` | `{ mode: string }`                   | Mode change notification |
+
+---
 
 ## 🏭 Station Types
 
-### 1. Pump Station (สถานีส่งน้ำ)
+<table>
+<tr>
+<td width="50%">
+
+### 💧 Pump Station
 
 - Network Status
 - 3 Pumps (Status, Auto/Manual, Overload)
 - Water Level
 - Door Level
 
-### 2. Valve Station (จุดรับน้ำ)
+### 🚿 Valve Station
 
 - Network Status
 - Valve Status (Open/Close)
 - Valve Control (Remote/Local)
 - Water Level
 
-### 3. Double Valve Station (บ่อรับน้ำ)
+</td>
+<td width="50%">
+
+### 🔀 Double Valve Station
 
 - Network Status
 - 2 Valves (Status + Control)
 - Water Level
 
-### 4. Flood Gate (ประตูระบายน้ำ)
+### 🚧 Flood Gate
 
 - Network Status
-- Status Power
+- Power Status
 - Control Valve
-- Overload
-- Door Level
-- Water Level
+- Overload Alarm
+- Door Level & Water Level
 
-## 🔧 Configuration
+</td>
+</tr>
+</table>
+
+---
+
+## ⚙️ Configuration {#configuration}
 
 ### Environment Variables
 
-| Variable          | Default     | Description                         |
-| ----------------- | ----------- | ----------------------------------- |
-| `CONNECTION_MODE` | `demo`      | โหมดเริ่มต้น (`demo` หรือ `modbus`) |
-| `MODBUS_HOST`     | `127.0.0.1` | Modbus server host                  |
-| `MODBUS_PORT`     | `502`       | Modbus server port                  |
-| `MODBUS_UNIT_ID`  | `1`         | Modbus unit ID                      |
+| Variable          | Default     | Description                       |
+| ----------------- | ----------- | --------------------------------- |
+| `CONNECTION_MODE` | `demo`      | Initial mode (`demo` or `modbus`) |
+| `MODBUS_HOST`     | `127.0.0.1` | Modbus server IP                  |
+| `MODBUS_PORT`     | `502`       | Modbus server port                |
+| `MODBUS_UNIT_ID`  | `1`         | Modbus unit ID                    |
 
 ### Register Mapping
 
-ดู `STATION_REGISTERS` ใน `server.js` สำหรับ register mapping ทั้งหมด
+See `STATION_REGISTERS` in `server.js` for complete register mapping documentation.
 
-## 🎨 Control Panel
-
-Control Panel จะอยู่มุมขวาบนของหน้าจอ ประกอบด้วย:
-
-- **Connection Status** - สถานะการเชื่อมต่อ WebSocket
-- **Current Mode** - โหมดปัจจุบัน (DEMO/MODBUS)
-- **Mode Switch Buttons** - ปุ่มสลับโหมด
+---
 
 ## 🐛 Troubleshooting
 
-### Server ไม่เริ่มทำงาน
+<details>
+<summary><strong>Server won't start</strong></summary>
 
 ```bash
-# ตรวจสอบว่า port 3001 ว่างอยู่
+# Check if port 3001 is in use
 netstat -ano | findstr :3001
 
-# Kill process ที่ใช้ port
+# Kill the process
 taskkill /PID <pid> /F
 ```
 
-### Modbus Connection Failed
+</details>
 
-- ตรวจสอบว่า Modbus server กำลังทำงาน
-- ตรวจสอบ IP address และ port
-- Server จะสลับไป Demo mode อัตโนมัติหลังจาก retry 15 ครั้ง
+<details>
+<summary><strong>Modbus connection failed</strong></summary>
 
-### WebSocket Disconnected
+- Verify Modbus server is running
+- Check IP address and port configuration
+- Server auto-switches to Demo mode after 15 failed retries
+</details>
 
-- ตรวจสอบว่า server กำลังทำงานที่ port 3001
-- ตรวจสอบ firewall settings
-- ลอง refresh หน้าเว็บ
+<details>
+<summary><strong>WebSocket disconnected</strong></summary>
+
+- Ensure server is running on port 3001
+- Check firewall settings
+- Try refreshing the browser
+</details>
+
+---
+
+## � Changelog
+
+### v1.0.0 (2025-12-10)
+
+- ✨ Initial release
+- 🎮 Demo mode with realistic data simulation
+- 📡 Modbus TCP/IP integration
+- 🗺️ 3D Mapbox visualization
+- 🎛️ Control Panel UI for mode switching
+- 📊 Support for 6 station types
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
 
 ## 📝 License
 
-ISC
+This project is licensed under the **MIT License**.
 
-## 👥 Contributors
+---
 
-- Development Team
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/GenDevLife">GenDevLife</a>
+</p>
